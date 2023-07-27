@@ -1,0 +1,63 @@
+{
+  "name": "pages-starter-react-locations",
+  "version": "0.0.0",
+  "description": "An example repository to help users get started with React development on Yext Pages",
+  "author": "sumo@yext.com",
+  "license": "BSD-3-Clause",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build:local && yext pages generate-test-data && pages dev",
+    "build:local": "vite build",
+    "build": "yext pages build && yext pages generate-test-data && yext pages render",
+    "build:serve": "npm run build && yext pages serve",
+    "serve": "yext pages serve",
+    "features": "pages generate features",
+    "fmt": "prettier -w .",
+    "lint": "eslint .",
+    "clean": "rm -rf .artifact-output .yext/ dist/ localData sites-rendered-output",
+    "generate-notices": "generate-license-file --input package.json --output ./THIRD-PARTY-NOTICES --overwrite"
+  },
+  "engines": {
+    "node": ">=17"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.15",
+    "@heroicons/react": "^2.0.18",
+    "@types/react-slick": "^0.23.10",
+    "@yext/search-headless-react": "^2.2.0",
+    "@yext/search-ui-react": "^1.2.1",
+    "@yext/types": "0.1.12-alpha",
+    "font-awesome": "^4.7.0",
+    "mapbox-gl": "^2.15.0",
+    "markdown-to-jsx": "^7.2.1",
+    "react": "^17.0.2",
+    "react-accessible-accordion": "^5.0.0",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.9.0",
+    "react-schemaorg": "^2.0.0",
+    "react-showdown": "^2.3.1",
+    "react-slick": "^0.29.0",
+    "schema-dts": "^1.1.2",
+    "slick-carousel": "^1.8.1",
+    "tailwind-merge": "^1.13.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@types/mapbox-gl": "^2.7.11",
+    "@types/react": "^17.0.49",
+    "@types/react-dom": "^17.0.17",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "@vitejs/plugin-react": "^2.1.0",
+    "@yext/pages": "1.0.0-beta.22",
+    "autoprefixer": "^10.4.14",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-react": "^7.32.2",
+    "generate-license-file": "^2.0.0",
+    "postcss": "^8.4.24",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^4.8.3",
+    "vite": "^3.1.0"
+  }
+}
