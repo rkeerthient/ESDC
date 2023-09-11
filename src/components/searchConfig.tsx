@@ -2,7 +2,7 @@
 
 const searchConfig = {
   apiKey: "9626ad1fa71c5477e6ffe765b3f508fb",
-  experienceKey: "answers",
+  experienceKey: "-esdc-basic-search",
   locale: "en",
   // verticalKey: "restaurants",
   // cloudRegion: CloudRegion.US,

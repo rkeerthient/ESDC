@@ -12,7 +12,6 @@ import {
   HeadConfig,
 } from "@yext/pages";
 import PageLayout from "../components/page-layout";
-import { SearchBar, UniversalResults } from "@yext/search-ui-react";
 import Results from "../components/results";
 
 export const config: TemplateConfig = {
