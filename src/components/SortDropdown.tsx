@@ -31,7 +31,7 @@ const sortByOptions: { label: string; sortBy: SortBy }[] = [
     label: "Date: New-Old",
     sortBy: {
       field: "datePosted",
-      direction: Direction.Ascending,
+      direction: Direction.Descending,
       type: SortType.Field,
     },
   },
@@ -39,7 +39,7 @@ const sortByOptions: { label: string; sortBy: SortBy }[] = [
     label: "Date: Old-New",
     sortBy: {
       field: "datePosted",
-      direction: Direction.Descending,
+      direction: Direction.Ascending,
       type: SortType.Field,
     },
   },
