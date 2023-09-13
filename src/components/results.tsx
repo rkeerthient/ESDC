@@ -26,7 +26,7 @@ const Results = ({ vertKey }: ResultProps) => {
   const universalLimit: UniversalLimit = {
     pages: 10,
     pages_french: 10,
-    documents: 10,
+    document: 10,
   };
 
   React.useEffect(() => {
@@ -70,7 +70,6 @@ const Results = ({ vertKey }: ResultProps) => {
           console.error("Error fetching universal query:", error);
         }
       }
-
       setLoading(false);
     };
 
@@ -153,7 +152,7 @@ const Results = ({ vertKey }: ResultProps) => {
                   label: "Pages French",
                   CardComponent: ResultsCard,
                 },
-                documents: {
+                document: {
                   label: "Documents",
                   CardComponent: ResultsCard,
                 },

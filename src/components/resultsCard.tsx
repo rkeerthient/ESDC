@@ -16,7 +16,7 @@ const ResultsCard = (props: CardProps<any>): JSX.Element => {
 
   const updateReadMoreContent = () => {
     setReadMore(!readMore);
-    readMore ? setResText(currText.slice(0, 1000)) : setResText(currText);
+    readMore ? setResText(currText.slice(0, 500)) : setResText(currText);
   };
   useEffect(() => {
     result.rawData.c_subdirectory1 &&
@@ -27,7 +27,7 @@ const ResultsCard = (props: CardProps<any>): JSX.Element => {
       ? cat.push(result.rawData.c_dateAndPlace.toString())
       : cat.push(result.rawData.datePosted.toString());
     setCat(cat);
-    setResText(currText.slice(0, 1000));
+    setResText(currText.slice(0, 500));
   }, []);
   console.log(cat);
   const capitalizeFirstLetter = (string: string) => {
@@ -74,7 +74,7 @@ const ResultsCard = (props: CardProps<any>): JSX.Element => {
               {readMore ? "Show less >" : "Show more >"}
             </div>
           </div>
-          <a href={result.rawData.landingPageUrl} className="mr-20 mt-32 ">
+          <a href={result.rawData.landingPageUrl} className="mr-20 ">
             <div className="bg-[#284162] text-white uppercase px-6 py-2 w-fit rounded-full">
               Visit page
             </div>
