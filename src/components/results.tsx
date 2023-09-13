@@ -121,7 +121,7 @@ const Results = ({ vertKey }: ResultProps) => {
       <SearchBar onSearch={handleSearch}></SearchBar>
       {!loading ? (
         <>
-          {resCount && (
+          {resCount && resCount !== 0 && (
             <div className="my-4 text-gray-500">
               Fetched {resCount} results in {time}ms
             </div>
