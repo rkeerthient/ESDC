@@ -42,7 +42,7 @@ const Results = ({ vertKey }: ResultProps) => {
         }
       } else {
         searchActions.setUniversal();
-        searchActions.setQuery("pages");
+        searchActions.setQuery("documents");
         try {
           const res = await searchActions.executeUniversalQuery();
           const reFetchCount = res?.verticalResults.reduce(
@@ -82,7 +82,6 @@ const Results = ({ vertKey }: ResultProps) => {
             const d2 = new Date();
             const reFetchCount = res?.verticalResults.resultsCount;
             const reFetchTime: number = d2.getTime() - d1.getTime();
-
             setResCount(reFetchCount);
             setTime(reFetchTime);
           })
@@ -108,6 +107,7 @@ const Results = ({ vertKey }: ResultProps) => {
           .then(() => {
             console.log(time), setLoading(false);
           });
+
     const queryParams = new URLSearchParams(window.location.search);
     if (query) {
       queryParams.set("query", query);
