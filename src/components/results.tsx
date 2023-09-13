@@ -22,8 +22,56 @@ const Results = ({ vertKey }: ResultProps) => {
   const [loading, setLoading] = useState(false);
   const [time, setTime] = useState<number | undefined>();
   const [resCount, setResCount] = useState<number | undefined>();
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const d1 = new Date();
+      searchActions.setQuery("");
+
+      if (vertKey) {
+        searchActions.setVertical(vertKey);
+        try {
+          const res = await searchActions.executeVerticalQuery();
+          const d2 = new Date();
+          const reFetchCount = res?.verticalResults.resultsCount;
+          const reFetchTime: number = d2.getTime() - d1.getTime();
+
+          setResCount(reFetchCount);
+          setTime(reFetchTime);
+        } catch (error) {
+          console.error("Error fetching vertical query:", error);
+        }
+      } else {
+        searchActions.setUniversal();
+
+        try {
+          const res = await searchActions.executeUniversalQuery();
+          const reFetchCount = res?.verticalResults.reduce(
+            (accumulator, currentValue) =>
+              accumulator + currentValue.resultsCount,
+            0
+          );
+          const reFetchTime = res?.verticalResults.reduce(
+            (accumulator, currentValue) =>
+              accumulator + currentValue.queryDurationMillis,
+            0
+          );
+
+          setResCount(reFetchCount);
+          setTime(reFetchTime);
+        } catch (error) {
+          console.error("Error fetching universal query:", error);
+        }
+      }
+
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [vertKey, searchActions]);
+
   const handleSearch: onSearchFunc = (searchEventData) => {
     const { query } = searchEventData;
+    const d1 = new Date();
 
     setLoading(true);
     vertKey ? searchActions.setVertical(vertKey) : searchActions.setUniversal();
@@ -31,8 +79,10 @@ const Results = ({ vertKey }: ResultProps) => {
       ? searchActions
           .executeVerticalQuery()
           .then((res) => {
+            const d2 = new Date();
             const reFetchCount = res?.verticalResults.resultsCount;
-            const reFetchTime = res?.verticalResults.queryDurationMillis;
+            const reFetchTime: number = d2.getTime() - d1.getTime();
+
             setResCount(reFetchCount);
             setTime(reFetchTime);
           })
