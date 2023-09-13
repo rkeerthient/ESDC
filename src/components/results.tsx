@@ -50,7 +50,7 @@ const Results = ({ vertKey }: ResultProps) => {
       } else {
         searchActions.setUniversalLimit(universalLimit);
         searchActions.setUniversal();
-        searchActions.setQuery("documents");
+        searchActions.setQuery("statement");
         try {
           const res = await searchActions.executeUniversalQuery();
           const reFetchCount = res?.verticalResults.reduce(
