@@ -25,10 +25,10 @@ const Results = ({ vertKey }: ResultProps) => {
   React.useEffect(() => {
     const fetchData = async () => {
       const d1 = new Date();
-      vertKey ? searchActions.setQuery("") : searchActions.setQuery("pages");
 
       if (vertKey) {
         searchActions.setVertical(vertKey);
+        searchActions.setQuery("");
         try {
           const res = await searchActions.executeVerticalQuery();
           const d2 = new Date();
@@ -42,7 +42,7 @@ const Results = ({ vertKey }: ResultProps) => {
         }
       } else {
         searchActions.setUniversal();
-
+        searchActions.setQuery("pages");
         try {
           const res = await searchActions.executeUniversalQuery();
           const reFetchCount = res?.verticalResults.reduce(
