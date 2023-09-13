@@ -30,15 +30,26 @@ const ResultsCard = (props: CardProps<any>): JSX.Element => {
     setResText(currText.slice(0, 1000));
   }, []);
   console.log(cat);
-
+  const capitalizeFirstLetter = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
   return (
     <div className="w-full  my-4 border   p-4 ">
       <div>
         <div onClick={() => setIsActive(!isActive)}>
-          <div className="flex justify-between">
+          <div>
             <div>
               <div className="w-full break-before-auto text-[#284162] hover:cursor-pointer text-lg">
                 {result.name}
+              </div>
+              <div className="text-green-600 my-2">
+                {new URL(result.rawData.landingPageUrl).protocol +
+                  "//" +
+                  new URL(result.rawData.landingPageUrl).host +
+                  " > " +
+                  capitalizeFirstLetter(
+                    new URL(result.rawData.landingPageUrl).host
+                  )}
               </div>
               <div className="flex text-gray-400 text-sm">
                 {cat.map((item: string, index: number) => (
