@@ -25,7 +25,7 @@ const Results = ({ vertKey }: ResultProps) => {
   React.useEffect(() => {
     const fetchData = async () => {
       const d1 = new Date();
-      searchActions.setQuery("");
+      vertKey ? searchActions.setQuery("") : searchActions.setQuery("pages");
 
       if (vertKey) {
         searchActions.setVertical(vertKey);
@@ -134,7 +134,22 @@ const Results = ({ vertKey }: ResultProps) => {
               <VerticalResults CardComponent={ResultsCard} />
             </div>
           ) : (
-            <UniversalResults verticalConfigMap={{}}></UniversalResults>
+            <UniversalResults
+              verticalConfigMap={{
+                pages: {
+                  label: "Pages English",
+                  CardComponent: ResultsCard,
+                },
+                pages_french: {
+                  label: "Pages French",
+                  CardComponent: ResultsCard,
+                },
+                documents: {
+                  label: "Documents",
+                  CardComponent: ResultsCard,
+                },
+              }}
+            ></UniversalResults>
           )}
         </>
       ) : (
