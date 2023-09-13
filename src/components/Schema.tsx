@@ -1,7 +1,6 @@
 import * as React from "react";
 import { JsonLd } from "react-schemaorg";
 import { ClothingStore, FAQPage, Place, ItemList } from "schema-dts";
-import Product from "../types/products";
 const Schema = (props: any) => {
   const { document } = props;
   const name = `${document.name} in ${document.address.city}, ${document.address.region}`;
