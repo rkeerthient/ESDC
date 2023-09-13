@@ -1,4 +1,5 @@
 import {
+  UniversalLimit,
   useSearchActions,
   useSearchState,
   useSearchUtilities,
@@ -22,6 +23,12 @@ const Results = ({ vertKey }: ResultProps) => {
   const [loading, setLoading] = useState(false);
   const [time, setTime] = useState<number | undefined>();
   const [resCount, setResCount] = useState<number | undefined>();
+  const universalLimit: UniversalLimit = {
+    pages: 10,
+    pages_french: 10,
+    documents: 10,
+  };
+
   React.useEffect(() => {
     const fetchData = async () => {
       const d1 = new Date();
@@ -41,6 +48,7 @@ const Results = ({ vertKey }: ResultProps) => {
           console.error("Error fetching vertical query:", error);
         }
       } else {
+        searchActions.setUniversalLimit(universalLimit);
         searchActions.setUniversal();
         searchActions.setQuery("documents");
         try {
@@ -88,7 +96,8 @@ const Results = ({ vertKey }: ResultProps) => {
           .then(() => {
             console.log(time), setLoading(false);
           })
-      : searchActions
+      : (searchActions.setUniversalLimit(universalLimit),
+        searchActions
           .executeUniversalQuery()
           .then((res) => {
             const reFetchCount = res?.verticalResults.reduce(
@@ -106,7 +115,7 @@ const Results = ({ vertKey }: ResultProps) => {
           })
           .then(() => {
             console.log(time), setLoading(false);
-          });
+          }));
 
     const queryParams = new URLSearchParams(window.location.search);
     if (query) {
